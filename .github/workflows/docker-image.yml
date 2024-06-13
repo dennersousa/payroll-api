@@ -3,10 +3,10 @@ name: Go Build and Test
 on:
   push:
     branches:
-      - main  # ajuste conforme o nome da sua branch principal
+      - main  # ajuste conforme a nome da sua branch principal
   pull_request:
     branches:
-      - main  # ajuste conforme o nome da sua branch principal
+      - main  # ajuste conforme a nome da sua branch principal
 
 jobs:
   build:
