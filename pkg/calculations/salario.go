@@ -30,7 +30,7 @@ type ResultadoCalculo struct {
 	TotalPagar                 float64 `json:"total_pagar"`
 }
 
-func CalcularSalario(empregado Colaborador, inicioPeriodo, fimPeriodo string, jornadaSemanal int) (ResultadoCalculo, error) {
+func CalcularSalario(colaborador Colaborador, inicioPeriodo, fimPeriodo string, jornadaSemanal int) (ResultadoCalculo, error) {
 	_, err := NovoPeriodoTrabalhado(inicioPeriodo, fimPeriodo)
 	if err != nil {
 		return ResultadoCalculo{}, err
@@ -41,10 +41,10 @@ func CalcularSalario(empregado Colaborador, inicioPeriodo, fimPeriodo string, jo
 		return ResultadoCalculo{}, err
 	}
 
-	salarioBase := empregado.SalarioMensal
+	salarioBase := colaborador.SalarioMensal
 	var adicional float64
 
-	if empregado.AdicionalPericulosidade {
+	if colaborador.AdicionalPericulosidade {
 		adicional = salarioBase * 0.3
 	}
 
@@ -52,7 +52,7 @@ func CalcularSalario(empregado Colaborador, inicioPeriodo, fimPeriodo string, jo
 	salarioHora := salarioTotal / float64(divisor)
 
 	adicionalNoturno, horaExtraDiurna, horaExtraNoturna, horaExtraDomFer, reflexoHorasExtrasDSR, reflexoAdicionalNoturnoDSR := CalcularHorasExtrasEAdicionais(
-		salarioHora, empregado.HorasExtrasDiurnas, empregado.HorasExtrasNoturnas, empregado.HorasExtrasDomFer, empregado.HorasNoturnas)
+		salarioHora, colaborador.HorasExtrasDiurnas, colaborador.HorasExtrasNoturnas, colaborador.HorasExtrasDomFer, colaborador.HorasNoturnas)
 
 	totalDevido := salarioTotal + adicionalNoturno + horaExtraDiurna + horaExtraNoturna + horaExtraDomFer + reflexoHorasExtrasDSR + reflexoAdicionalNoturnoDSR
 
