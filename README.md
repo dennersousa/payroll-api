@@ -73,19 +73,19 @@ Calcula a folha de pagamento de um empregado para um determinado período.
 
 ```json
 {
-    "empregado": {
-        "nome": "João da Silva",
-        "salario_mensal": 3000.00,
-        "horas_trabalhadas": 160,
-        "horas_extras_diurnas": 10,
-        "horas_extras_noturnas": 5,
-        "horas_extras_dom_feriado": 2,
-        "horas_noturnas": 15,
-        "adicional_periculosidade": true
-    },
-    "inicio_periodo": "01/06/2023",
-    "fim_periodo": "30/06/2023",
-    "jornada_semanal": 44
+  "colaborador": {
+    "nome": "João da Silva",
+    "salario_mensal": 3000.00,
+    "horas_trabalhadas": 160,
+    "horas_extras_diurnas": 10,
+    "horas_extras_noturnas": 5,
+    "horas_extras_dom_feriado": 2,
+    "horas_noturnas": 15,
+    "adicional_periculosidade": true
+  },
+  "inicio_periodo": "01/06/2024",
+  "fim_periodo": "30/06/2024",
+  "jornada_semanal": 44
 }
 ```
 
@@ -93,29 +93,24 @@ Calcula a folha de pagamento de um empregado para um determinado período.
 
 ```json
 {
-    "salario_base": 3000.00,
-    "adicional": 900.00,
-    "salario_total": 3900.00,
-    "salario_hora": 17.73,
-    "adicional_noturno": 53.19,
-    "hora_extra_diurna": 265.95,
-    "hora_extra_noturna": 159.57,
-    "hora_extra_dom_fer": 70.92,
-    "reflexo_horas_extras_dsr": 81.24,
-    "reflexo_adicional_noturno_dsr": 8.86,
-    "total_devido": 4539.73,
-    "inss": 524.93,
-    "irrf": 153.55,
-    "total_pagar": 3861.25
+  "salario_base": 3000,
+  "adicional": 900,
+  "salario_total": 3900,
+  "salario_hora": 17.727272727272727,
+  "adicional_noturno": 53.18181818181818,
+  "hora_extra_diurna": 265.9090909090909,
+  "hora_extra_noturna": 159.54545454545456,
+  "hora_extra_dom_fer": 70.9090909090909,
+  "reflexo_horas_extras_dsr": 82.72727272727273,
+  "reflexo_adicional_noturno_dsr": 8.863636363636363,
+  "total_devido": 4541.136363636364,
+  "inss": 454.5780909090909,
+  "irrf": 267.7466113636364,
+  "total_pagar": 3818.8116613636366
 }
 ```
 
 ## Como Executar
-
-### Pré-requisitos
-
-- Go 1.18+
-- Git
 
 ### Passos para executar
 
@@ -142,7 +137,7 @@ A API estará disponível em `http://localhost:8080`.
 
 ## Estruturas e Funções Detalhadas
 
-### Estrutura `Empregado`
+### Estrutura `Colaborador`
 
 Define os dados do empregado necessários para o cálculo da folha de pagamento.
 
@@ -164,7 +159,7 @@ type Colaborador struct {
 Realiza o cálculo completo da folha de pagamento.
 
 ```go
-func CalcularSalario(empregado Empregado, inicioPeriodo, fimPeriodo string, jornadaSemanal int) (ResultadoCalculo, error)
+func CalcularSalario(colaborador Colaborador, inicioPeriodo, fimPeriodo string, jornadaSemanal int) (ResultadoCalculo, error)
 ```
 
 ### Função `CalcularINSS`
