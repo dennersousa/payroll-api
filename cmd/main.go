@@ -1,11 +1,17 @@
-// /cmd/main.go
+// cmd/main.go
+
 package main
 
 import (
-	"https://github.com/dennersousa/payroll-api/internal/api"
+	"github.com/gin-gonic/gin"
+	"payroll-api/internal/api/handlers"
 )
 
 func main() {
-	router := api.SetupRouter()
-	router.Run(":8080") // Inicia o servidor na porta 8080
+	r := gin.Default()
+	r.POST("/api/calcular", handlers.CalcularFolhaPagamento)
+	err := r.Run(":8080")
+	if err != nil {
+		return
+	}
 }
