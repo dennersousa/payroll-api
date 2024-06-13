@@ -195,4 +195,4 @@ Para integrar com o Excel, você pode usar o recurso de consulta de dados extern
 
 ## Licença
 
-Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+Este projeto está licenciado - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
